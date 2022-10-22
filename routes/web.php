@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/analisis', function () {
+/*Route::get('/analisis', function () {
     return view('welcome');
-});
+});*/
+
+
+
+Route::view('/analisis/login',"auth.login")->name('login');
+Route::view('/analisis/register',"auth.register")->name('register');
+Route::view('/analisis',"home")->middleware('auth')->name('home');
+
+Route::post('/analisis/validar-registro',[LoginController::class,'register'])->name('validar-registro');
+Route::post('/analisis/inicia-sesion',[LoginController::class,'login'])->name('inicia-sesion');
+Route::get('/analisis/logout',[LoginController::class,'logout'])->name('logout');
