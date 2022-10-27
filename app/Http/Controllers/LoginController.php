@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\Console\Input\Input;
-
+use Log;
 
 class LoginController extends Controller
 {
@@ -38,12 +38,12 @@ class LoginController extends Controller
     public function login(Request $request){
 
         $request->validate([
-            'email' => ['required','email'],
+            'username' => ['required',],
             'password' => ['required',],
         ]);
 
         $credenciales = [
-            "email" => $request->email,
+            "username" => $request->username,
             "password" => $request->password,
         ];
 
@@ -51,10 +51,10 @@ class LoginController extends Controller
 
         if(Auth::attempt($credenciales,$remember)){
             $request->session()->regenerate();
-            return redirect()->intended(route('home'));
+            return redirect()->intended(route('empresas'));
         }
         
-        $errors = new MessageBag(['email' => ['Estas credenciales no coinciden con nuestros registros.']]);
+        $errors = new MessageBag(['username' => ['Estas credenciales no coinciden con nuestros registros.']]);
         return Redirect::back()->withErrors($errors);
     
     }
