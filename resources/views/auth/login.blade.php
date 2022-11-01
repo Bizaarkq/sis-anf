@@ -27,8 +27,8 @@
                   @csrf
                   <div class="col-12">
                     <label for="yourEmail" class="form-label">Correo electrónico</label>
-                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="yourEmail" value="{{ old('email') }}" required>
-                    @error('email')
+                    <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="yourEmail" value="{{ old('username') }}" required>
+                    @error('username')
                       <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                   </div>
