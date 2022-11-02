@@ -19,22 +19,17 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
-Route::prefix('analisis')->group(function(){
 
     Route::view('/login',"auth.login")->name('login');
     Route::view('/register',"auth.register")->name('register');
+    Route::post('/validar-registro',[LoginController::class,'register'])->name('validar-registro');
+    Route::post('/inicia-sesion',[LoginController::class,'login'])->name('inicia-sesion');
+    Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
     Route::middleware(['auth'])->group(function(){
         Route::view('/',"home")->name('home');
         Route::get('/empresas', [EmpresaController::class, 'index'])->name('empresas');
         Route::post('/empresa/rol', [EmpresaController::class, 'setRolEmpresa'])->name('empresa.rol');
     });
-
-    
-
-    Route::post('/validar-registro',[LoginController::class,'register'])->name('validar-registro');
-    Route::post('/inicia-sesion',[LoginController::class,'login'])->name('inicia-sesion');
-    Route::get('/logout',[LoginController::class,'logout'])->name('logout');
-});
 
 
