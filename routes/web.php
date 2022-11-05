@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\CargarEstadosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,13 @@ use Illuminate\Support\Facades\Route;
         Route::view('/',"home")->name('home');
         Route::get('/empresas', [EmpresaController::class, 'index'])->name('empresas');
         Route::post('/empresa/rol', [EmpresaController::class, 'setRolEmpresa'])->name('empresa.rol');
+
+        Route::prefix('cargar-estados')->group(function(){
+            Route::get('/', [CargarEstadosController::class, 'show'])->name('cargar-estados.show');
+            Route::post('/', [CargarEstadosController::class, 'load'])->name('cargar-estados.load');
+            Route::get('/exportar-excel', [CargarEstadosController::class, 'exportExcel'])->name('cargar-estados.export-excel');
+            Route::get('/obtener/{periodo}', [CargarEstadosController::class, 'getEstados'])->name('cargar-estados.get-estados');
+        });
     });
 
 
