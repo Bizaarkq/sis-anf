@@ -21,7 +21,6 @@ class CargarEstadosController extends Controller
     
     public function load(Request $request){
         $cuerpo = $request->post();
-
         $cuentasFinancierasBase = DB::table('CUENTA_FINANCIERA')->pluck('ID_CUENTA_FINANCIERA','NOMBRE_CUENTA_FINANCIERA')->toArray();
         $empresaID = $request->session()->get('empresaID');
         $registrosExistentes = DB::table('REGISTRO')
@@ -50,7 +49,12 @@ class CargarEstadosController extends Controller
                         }else{
                             $key = array_search($cuentasFinancierasBase[$cuenta[0]], array_column($registro, 'ID_CUENTA_FINANCIERA'));
                             if($key !== false){
-                                $registro[$key]['MONTO_REGISTRO'] = $cuenta[1];
+                                if($registro[$key]['MONTO_REGISTRO'] != $cuenta[1]){
+                                    $registro[$key]['MONTO_REGISTRO'] = $cuenta[1];
+                                }else{
+                                    unset($registro[$key]);
+                                    $registro = array_values($registro);
+                                }
                             }
                         }
                     }
@@ -86,7 +90,12 @@ class CargarEstadosController extends Controller
                     if(!(array_search($cuenta, $cuentasFinancierasBase) === false)){
                         $key = array_search($cuenta, array_column($registro, 'ID_CUENTA_FINANCIERA'));
                         if($key !== false){
-                            $registro[$key]['MONTO_REGISTRO'] = $monto;
+                            if($registro[$key]['MONTO_REGISTRO'] != $monto){
+                                $registro[$key]['MONTO_REGISTRO'] = $monto;
+                            }else{
+                                unset($registro[$key]);
+                                $registro = array_values($registro);
+                            }
                         }
                     }
                 }
@@ -97,7 +106,6 @@ class CargarEstadosController extends Controller
                 }
             }
         }
-        
         return redirect(route('cargar-estados.show'));
     }
 

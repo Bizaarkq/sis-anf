@@ -47,7 +47,7 @@
                                                 class="col-sm-9 col-form-label activos activos-corrientes">Efectivo y
                                                 equivalente</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="efectivoEq" name="1"
+                                                <input required type="number" step="0.01" id="efectivoEq" name="1"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -56,7 +56,7 @@
                                                 class="col-sm-9 col-form-label activos activos-corrientes">Cuentas por
                                                 cobrar</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="accxc" name="2" class="form-control">
+                                                <input required type="number" step="0.01" id="accxc" name="2" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
@@ -64,7 +64,7 @@
                                                 class="col-sm-9 col-form-label activos activos-corrientes">Prestamos y
                                                 anticipos a empleados</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="prestamos" name="3" class="form-control">
+                                                <input required type="number" step="0.01" id="prestamos" name="3" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
@@ -72,7 +72,7 @@
                                                 class="col-sm-9 col-form-label activos activos-corrientes">Deudores
                                                 varios</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="deudores" name="4" class="form-control">
+                                                <input required type="number" step="0.01" id="deudores" name="4" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
@@ -80,7 +80,7 @@
                                                 class="col-sm-9 col-form-label activos activos-corrientes">Pagos
                                                 anticipados</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="pagosAnt" name="5" class="form-control">
+                                                <input required type="number" step="0.01" id="pagosAnt" name="5" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
@@ -88,7 +88,7 @@
                                                 class="col-sm-9 col-form-label activos activos-corrientes">Pagos a
                                                 cuenta</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="pagosCuenta" name="6"
+                                                <input required type="number" step="0.01" id="pagosCuenta" name="6"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -97,7 +97,7 @@
                                                 class="col-sm-9 col-form-label activos activos-corrientes">Crédito Fiscal
                                                 IVA</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="credito" name="7"
+                                                <input required type="number" step="0.01" id="credito" name="7"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -105,7 +105,7 @@
                                             <label for="inventario"
                                                 class="col-sm-9 col-form-label activos activos-corrientes">Inventarios</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="inventario" name="8"
+                                                <input required type="number" step="0.01" id="inventario" name="8"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -115,7 +115,7 @@
                                                 <h5>Total de activos corrientes</h5>
                                             </label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="totalActivosCorrientes"
+                                                <input required type="number" step="0.01" id="totalActivosCorrientes"
                                                     name="9" class="form-control">
                                             </div>
                                         </div>
@@ -127,7 +127,7 @@
                                                 class="col-sm-9 col-form-label activos activos-no-corrientes">Propiedad,
                                                 planta y equipo</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="propiedad" name="10"
+                                                <input required type="number" step="0.01" id="propiedad" name="10"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -136,7 +136,7 @@
                                                 class="col-sm-9 col-form-label activos activos-no-corrientes">Depreciación
                                                 acumulada</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="deprec" name="11"
+                                                <input required type="number" step="0.01" id="deprec" name="11"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -145,7 +145,7 @@
                                                 class="col-sm-9 col-form-label activos activos-no-corrientes">Seguros
                                                 pagados anticipados y diferidos</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="seguros" name="12"
+                                                <input required type="number" step="0.01" id="seguros" name="12"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -153,7 +153,7 @@
                                             <label for="intangibles"
                                                 class="col-sm-9 col-form-label activos activos-no-corrientes">Intangibles</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="intangibles" name="13"
+                                                <input required type="number" step="0.01" id="intangibles" name="13"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -162,7 +162,7 @@
                                                 class="col-sm-9 col-form-label activos activos-no-corrientes">Depositos en
                                                 garantía</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="depositos" name="14"
+                                                <input required type="number" step="0.01" id="depositos" name="14"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -171,7 +171,7 @@
                                                 <h5>Total de activos no corrientes</h5>
                                             </label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="totalActivosNoCorrientes"
+                                                <input required type="number" step="0.01" id="totalActivosNoCorrientes"
                                                     name="15" class="form-control">
                                             </div>
                                         </div>
@@ -181,7 +181,7 @@
                                                 <h4>Total de activos</h4>
                                             </label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="totalActivos" name="16"
+                                                <input required type="number" step="0.01" id="totalActivos" name="16"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -198,7 +198,7 @@
                                                     <label for="proveedores"
                                                         class="col-sm-9 col-form-label pasivos-corrientes pasivos">Proveedores</label>
                                                     <div class="col-sm-3">
-                                                        <input required type="number" id="proveedores" name="17"
+                                                        <input required type="number" step="0.01" id="proveedores" name="17"
                                                             class="form-control">
                                                     </div>
                                                 </div>
@@ -206,7 +206,7 @@
                                                     <label for="acreedores"
                                                         class="col-sm-9 col-form-label pasivos-corrientes pasivos">Acreedores</label>
                                                     <div class="col-sm-3">
-                                                        <input required type="number" id="acreedores" name="18"
+                                                        <input required type="number" step="0.01" id="acreedores" name="18"
                                                             class="form-control">
                                                     </div>
                                                 </div>
@@ -214,7 +214,7 @@
                                                     <label for="retenciones"
                                                         class="col-sm-9 col-form-label pasivos-corrientes pasivos">Retenciones</label>
                                                     <div class="col-sm-3">
-                                                        <input required type="number" id="retenciones" name="19"
+                                                        <input required type="number" step="0.01" id="retenciones" name="19"
                                                             class="form-control">
                                                     </div>
                                                 </div>
@@ -223,7 +223,7 @@
                                                         class="col-sm-9 col-form-label pasivos-corrientes pasivos">Impuesto
                                                         por pagar</label>
                                                     <div class="col-sm-3">
-                                                        <input required type="number" id="impuestosxpagar" name="20"
+                                                        <input required type="number" step="0.01" id="impuestosxpagar" name="20"
                                                             class="form-control">
                                                     </div>
                                                 </div>
@@ -232,7 +232,7 @@
                                                         class="col-sm-9 col-form-label pasivos-corrientes pasivos">Provisión
                                                         laboral</label>
                                                     <div class="col-sm-3">
-                                                        <input required type="number" id="provision" name="21"
+                                                        <input required type="number" step="0.01" id="provision" name="21"
                                                             class="form-control">
                                                     </div>
                                                 </div>
@@ -241,7 +241,7 @@
                                                         class="col-sm-9 col-form-label pasivos-corrientes pasivos">Prestamos
                                                         a corto plazo</label>
                                                     <div class="col-sm-3">
-                                                        <input required type="number" id="prestamoscortoplazo"
+                                                        <input required type="number" step="0.01" id="prestamoscortoplazo"
                                                             name="22" class="form-control">
                                                     </div>
                                                 </div>
@@ -250,7 +250,7 @@
                                                         <h5>Total de pasivos corrientes</h5>
                                                     </label>
                                                     <div class="col-sm-3">
-                                                        <input required type="number" id="totalPasivosCorrientes"
+                                                        <input required type="number" step="0.01" id="totalPasivosCorrientes"
                                                             name="23" class="form-control">
                                                     </div>
                                                 </div>
@@ -261,7 +261,7 @@
                                                         class="col-sm-9 col-form-label pasivos-no-corrientes pasivos">Prestamos
                                                         a largo plazo</label>
                                                     <div class="col-sm-3">
-                                                        <input required type="number" id="prestamoslargoplazo"
+                                                        <input required type="number" step="0.01" id="prestamoslargoplazo"
                                                             name="24" class="form-control">
                                                     </div>
                                                 </div>
@@ -270,7 +270,7 @@
                                                         <h5>Total de pasivos no corrientes</h5>
                                                     </label>
                                                     <div class="col-sm-3">
-                                                        <input required type="number" id="totalPasivosNoCorrientes"
+                                                        <input required type="number" step="0.01" id="totalPasivosNoCorrientes"
                                                             name="25" class="form-control">
                                                     </div>
                                                 </div>
@@ -279,7 +279,7 @@
                                                         <h4>Total de pasivos</h4>
                                                     </label>
                                                     <div class="col-sm-3">
-                                                        <input required type="number" id="totalPasivos" name="26"
+                                                        <input required type="number" step="0.01" id="totalPasivos" name="26"
                                                             class="form-control">
                                                     </div>
                                                 </div>
@@ -293,14 +293,14 @@
                                                     <label for="capitalsocial" class="col-sm-9 col-form-label">Capital
                                                         social</label>
                                                     <div class="col-sm-3">
-                                                        <input required type="number" id="capitalsocial" name="27"
+                                                        <input required type="number" step="0.01" id="capitalsocial" name="27"
                                                             class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <label for="reservas" class="col-sm-9 col-form-label">Reservas</label>
                                                     <div class="col-sm-3">
-                                                        <input required type="number" id="reservas" name="28"
+                                                        <input required type="number" step="0.01" id="reservas" name="28"
                                                             class="form-control">
                                                     </div>
                                                 </div>
@@ -308,7 +308,7 @@
                                                     <label for="utilidades" class="col-sm-9 col-form-label">Utilidades no
                                                         distribuidas</label>
                                                     <div class="col-sm-3">
-                                                        <input required type="number" id="utilidades" name="29"
+                                                        <input required type="number" step="0.01" id="utilidades" name="29"
                                                             class="form-control">
                                                     </div>
                                                 </div>
@@ -316,7 +316,7 @@
                                                     <label for="utilidadejercicio"
                                                         class="col-sm-9 col-form-label">Utilidad del ejercicio</label>
                                                     <div class="col-sm-3">
-                                                        <input required type="number" id="utilidadejercicio"
+                                                        <input required type="number" step="0.01" id="utilidadejercicio"
                                                             name="30" class="form-control">
                                                     </div>
                                                 </div>
@@ -325,7 +325,7 @@
                                                         <h4>Total de Patrimonio</h4>
                                                     </label>
                                                     <div class="col-sm-3">
-                                                        <input required type="number" id="totalPatrimonio" name="31"
+                                                        <input required type="number" step="0.01" id="totalPatrimonio" name="31"
                                                             class="form-control">
                                                     </div>
                                                 </div>
@@ -334,7 +334,7 @@
                                                         <h4>Total de pasivo mas patrimonio</h4>
                                                     </label>
                                                     <div class="col-sm-3">
-                                                        <input required type="number" id="totalPasivoPatrimonio"
+                                                        <input required type="number" step="0.01" id="totalPasivoPatrimonio"
                                                             name="32" class="form-control">
                                                     </div>
                                                 </div>
@@ -350,7 +350,7 @@
                                             <label for="ingresos"
                                                 class="col-sm-9 col-form-label estado-resultado">Ingresos</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="ingresos" name="33"
+                                                <input required type="number" step="0.01" id="ingresos" name="33"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -358,7 +358,7 @@
                                             <label for="costoventas" class="col-sm-9 col-form-label estado-resultado">(-)
                                                 Costo de ventas</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="costoventas" name="34"
+                                                <input required type="number" step="0.01" id="costoventas" name="34"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -366,7 +366,7 @@
                                             <label for="utilidadbruta"
                                                 class="col-sm-9 col-form-label estado-resultado">(=) Utilidad bruta</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="utilidadbruta" name="35"
+                                                <input required type="number" step="0.01" id="utilidadbruta" name="35"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -375,7 +375,7 @@
                                                 class="col-sm-9 col-form-label estado-resultado">(-) Gastos de
                                                 operación</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="gastosoperacion" name="36"
+                                                <input required type="number" step="0.01" id="gastosoperacion" name="36"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -384,7 +384,7 @@
                                                 class="col-sm-9 col-form-label estado-resultado">Gastos de
                                                 administración</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="gastosadmin" name="37"
+                                                <input required type="number" step="0.01" id="gastosadmin" name="37"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -393,7 +393,7 @@
                                                 class="col-sm-9 col-form-label estado-resultado">Gastos de ventas y
                                                 mercadeo</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="gastosmercadeo" name="38"
+                                                <input required type="number" step="0.01" id="gastosmercadeo" name="38"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -401,7 +401,7 @@
                                             <label for="gastosfinan"
                                                 class="col-sm-9 col-form-label estado-resultado">Gastos financieros</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="gastosfinan" name="39"
+                                                <input required type="number" step="0.01" id="gastosfinan" name="39"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -410,7 +410,7 @@
                                                 class="col-sm-9 col-form-label estado-resultado">(=) Utilidad de
                                                 operación</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="utilidadoperacion" name="40"
+                                                <input required type="number" step="0.01" id="utilidadoperacion" name="40"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -418,7 +418,7 @@
                                             <label for="otrosingresos"
                                                 class="col-sm-9 col-form-label estado-resultado">(+) Otros ingresos</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="otrosingresos" name="41"
+                                                <input required type="number" step="0.01" id="otrosingresos" name="41"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -427,7 +427,7 @@
                                                 class="col-sm-9 col-form-label estado-resultado">(=) Utilidad antes de
                                                 impuestos y reserva legal</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="utilidadimpuesto" name="42"
+                                                <input required type="number" step="0.01" id="utilidadimpuesto" name="42"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -435,7 +435,7 @@
                                             <label for="reservalegal" class="col-sm-9 col-form-label estado-resultado">(-)
                                                 Reserva legal</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="reservalegal" name="43"
+                                                <input required type="number" step="0.01" id="reservalegal" name="43"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -444,7 +444,7 @@
                                                 class="col-sm-9 col-form-label estado-resultado">(-) Impuesto sobre la
                                                 renta</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="impuestorenta" name="44"
+                                                <input required type="number" step="0.01" id="impuestorenta" name="44"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -452,7 +452,7 @@
                                             <label for="utilidadneta" class="col-sm-9 col-form-label estado-resultado">(=)
                                                 Utilidad neta</label>
                                             <div class="col-sm-3">
-                                                <input required type="number" id="utilidadneta" name="45"
+                                                <input required type="number" step="0.01" id="utilidadneta" name="45"
                                                     class="form-control">
                                             </div>
                                         </div>
