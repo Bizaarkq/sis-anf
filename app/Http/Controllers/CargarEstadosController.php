@@ -50,25 +50,18 @@ class CargarEstadosController extends Controller
                             $key = array_search($cuentasFinancierasBase[$cuenta[0]], array_column($registro, 'ID_CUENTA_FINANCIERA'));
                             if($key !== false){
                                 if($registro[$key]['MONTO_REGISTRO'] != $cuenta[1]){
-                                    $registro[$key]['MONTO_REGISTRO'] = $cuenta[1];
-                                }else{
-                                    unset($registro[$key]);
-                                    $registro = array_values($registro);
+                                    //$registro[$key]['MONTO_REGISTRO'] = $cuenta[1];
+                                    DB::table('REGISTRO')
+                                    ->Where('ID_REGISTRO', $registro[$key]['ID_REGISTRO'])
+                                    ->update(['MONTO_REGISTRO' => $cuenta[1]], ['UPDATED_USER' => Auth::user()->username]);
                                 }
                             }
                         }
                     }
                 }
             }
-
             if($nuevoEstado){
                 DB::table('REGISTRO')->insert($registro);
-            }else{
-                foreach($registro as $reg){
-                    DB::table('REGISTRO')
-                    ->Where('ID_REGISTRO', $reg['ID_REGISTRO'])
-                    ->update(['MONTO_REGISTRO' => $reg['MONTO_REGISTRO']], ['UPDATED_USER' => Auth::user()->username]);
-                }
             }
         }else{
             if($nuevoEstado){
@@ -91,18 +84,12 @@ class CargarEstadosController extends Controller
                         $key = array_search($cuenta, array_column($registro, 'ID_CUENTA_FINANCIERA'));
                         if($key !== false){
                             if($registro[$key]['MONTO_REGISTRO'] != $monto){
-                                $registro[$key]['MONTO_REGISTRO'] = $monto;
-                            }else{
-                                unset($registro[$key]);
-                                $registro = array_values($registro);
+                                DB::table('REGISTRO')
+                                ->Where('ID_REGISTRO', $registro[$key]['ID_REGISTRO'])
+                                ->update(['MONTO_REGISTRO' => $monto], ['UPDATED_USER' => Auth::user()->username]);
                             }
                         }
                     }
-                }
-                foreach($registro as $reg){
-                    DB::table('REGISTRO')
-                    ->Where('ID_REGISTRO', $reg['ID_REGISTRO'])
-                    ->update(['MONTO_REGISTRO' => $reg['MONTO_REGISTRO']], ['UPDATED_USER' => Auth::user()->username]);
                 }
             }
         }
