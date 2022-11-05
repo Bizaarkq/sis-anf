@@ -114,6 +114,17 @@
         @endif
       @endif
 
+      @if(array_key_exists("ESTADOS_FINANCIEROS", Session::get('permisos')))
+        @if(in_array("estados.cargar", Session::get('permisos')['ESTADOS_FINANCIEROS']))
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{{route('cargar-estados.show')}}">
+            <i class="bi bi-journal"></i>
+            <span>Cargar Estados Financieros</span>
+          </a>
+        </li>
+        @endif
+      @endif
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('logout')}}">
           <i class="bi bi-box-arrow-right"></i>
