@@ -37,7 +37,7 @@ class EmpresaController extends Controller
         foreach($permisos as $permiso){
             $coleccion[$permiso->FORM][] = $permiso->DESC_OPCION;
         }
-
+        Session::put('empresaID', $request->empresaId);
         Session::put('permisos', $coleccion);
 
         return redirect(route('home'));
