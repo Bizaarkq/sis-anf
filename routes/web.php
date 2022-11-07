@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\CargarEstadosController;
 use App\Http\Controllers\RatiosController;
+use App\Http\Controllers\CargarCatalogoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +42,11 @@ use Illuminate\Support\Facades\Route;
         });
 
         Route::get('/ratios', [RatiosController::class, 'index'])->name('ratios');
+
+        Route::prefix('cargar-catalogo')->group(function(){
+            Route::get('/', [CargarCatalogoController::class, 'show'])->name('cargar-catalogo.show');
+        });
+
     });
 
 
