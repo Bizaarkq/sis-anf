@@ -10,21 +10,25 @@ class RatiosController extends Controller
     //
     public function index(Request $request){
         $empresaID = $request->session()->get('empresaID');
-        
+        $idTipoSector = $request->session()->get('idTipoSector');
         //Ratios segun la empresa seleccionada y segun periodo activo 
         $ratios = DB::table('RATIO')
         ->join('PERIODO', 'PERIODO.ID_PERIODO', '=', 'RATIO.ID_PERIODO')
         ->join('RATIO_CATALOGO', 'RATIO_CATALOGO.ID_RATIO_CATALOGO', '=', 'RATIO.ID_RATIO_CATALOGO')
         ->join('TIPO_SECTOR', 'TIPO_SECTOR.ID_TIPO_SECTOR', '=', 'RATIO.ID_TIPO_SECTOR')
         ->join('EMPRESA', 'EMPRESA.ID_EMPRESA', '=', 'RATIO.ID_EMPRESA')
-        ->join('RATIO_POR_TIPO', 'RATIO_POR_TIPO.ID_TIPO_SECTOR', 'RATIO.ID_TIPO_SECTOR')
-        ->select('VALOR_RATIO_POR_TIPO', 'PERIODO.ID_PERIODO', 'RATIO_CATALOGO.NOMBRE_RATIO_CATALOGO', 
+        //->join('RATIO_POR_TIPO', 'RATIO_POR_TIPO.ID_TIPO_SECTOR', 'RATIO.ID_TIPO_SECTOR')
+        ->select('PERIODO.ID_PERIODO', 'RATIO_CATALOGO.NOMBRE_RATIO_CATALOGO', 
                 'TIPO_SECTOR.ID_TIPO_SECTOR','TIPO_SECTOR.NOMBRE_TIPO_SECTOR', 'RATIO.VALOR_RATIO','EMPRESA.NOMBRE_EMPRESA')
         ->where('EMPRESA.ID_EMPRESA', '=', $empresaID)
         ->where('PERIODO.ACTIVO_PERIODO', '=', 1)
+        ->where('EMPRESA.ID_TIPO_SECTOR', '=', $idTipoSector)
         ->get();
 
+        //Valor nacional
+        $valorNacional = DB::table('');
 
-        return view('ratios.index', compact('ratios'));
+
+        return view('ratios.index', compact('ratios', 'idTipoSector'));
     }
 }
