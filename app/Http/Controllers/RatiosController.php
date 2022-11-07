@@ -18,7 +18,7 @@ class RatiosController extends Controller
         ->join('TIPO_SECTOR', 'TIPO_SECTOR.ID_TIPO_SECTOR', '=', 'RATIO.ID_TIPO_SECTOR')
         ->join('EMPRESA', 'EMPRESA.ID_EMPRESA', '=', 'RATIO.ID_EMPRESA')
         //->join('RATIO_POR_TIPO', 'RATIO_POR_TIPO.ID_TIPO_SECTOR', 'RATIO.ID_TIPO_SECTOR')
-        ->select('PERIODO.ID_PERIODO', 'RATIO_CATALOGO.NOMBRE_RATIO_CATALOGO', 
+        ->select('PERIODO.ID_PERIODO', 'RATIO_CATALOGO.NOMBRE_RATIO_CATALOGO', 'RATIO_CATALOGO.ID_RATIO_CATALOGO',
                 'TIPO_SECTOR.ID_TIPO_SECTOR','TIPO_SECTOR.NOMBRE_TIPO_SECTOR', 'RATIO.VALOR_RATIO','EMPRESA.NOMBRE_EMPRESA')
         ->where('EMPRESA.ID_EMPRESA', '=', $empresaID)
         ->where('PERIODO.ACTIVO_PERIODO', '=', 1)
@@ -26,9 +26,12 @@ class RatiosController extends Controller
         ->get();
 
         //Valor nacional
-        $valorNacional = DB::table('');
-
-
-        return view('ratios.index', compact('ratios', 'idTipoSector'));
+        $valorNacional = DB::table('RATIO_POR_TIPO')
+        ->join('RATIO_CATALOGO', 'RATIO_CATALOGO.ID_RATIO_CATALOGO', '=', 'RATIO_POR_TIPO.ID_RATIO_CATALOGO')
+        ->join('TIPO_SECTOR', 'TIPO_SECTOR.ID_TIPO_SECTOR', '=', 'RATIO_POR_TIPO.ID_TIPO_SECTOR')
+        ->select('RATIO_CATALOGO.ID_RATIO_CATALOGO','RATIO_POR_TIPO.ID_RATIO_POR_TIPO', 'RATIO_POR_TIPO.VALOR_RATIO_POR_TIPO')
+        ->where('RATIO_POR_TIPO.ID_TIPO_SECTOR', '=', $idTipoSector)
+        ->get();
+        return view('ratios.index', compact('ratios', 'valorNacional'));
     }
 }
