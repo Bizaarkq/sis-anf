@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\CargarEstadosController;
+use App\Http\Controllers\RatiosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +39,8 @@ use Illuminate\Support\Facades\Route;
             Route::get('/exportar-excel', [CargarEstadosController::class, 'exportExcel'])->name('cargar-estados.export-excel');
             Route::get('/obtener/{periodo}', [CargarEstadosController::class, 'getEstados'])->name('cargar-estados.get-estados');
         });
+
+        Route::get('/ratios', [RatiosController::class, 'index'])->name('ratios');
     });
 
 
