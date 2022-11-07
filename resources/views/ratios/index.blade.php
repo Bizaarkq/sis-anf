@@ -18,7 +18,7 @@
                             <td>{{$ratio->NOMBRE_RATIO_CATALOGO}}</td>
                             <td>{{$ratio->VALOR_RATIO}}</td>
                             <td>{{$ratio->VALOR_RATIO + 1}}</td>
-                        @if ($ratio->VALOR_RATIO)
+                        @if (!$ratio->VALOR_RATIO)
                             <td class="table-primary">Ratio es aceptable</td>
                         @else
                             <td class="table-danger">Ratio no se acepta</td>
