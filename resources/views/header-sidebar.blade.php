@@ -56,11 +56,11 @@
         @if(in_array("administrador", Session::get('permisos')['ADMIN']))
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-gem"></i><span>Menu del admin</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-gem"></i><span>Men&uacute; del admin</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="#">
+            <a href="{{ route('calcular-ratios.show') }}">
               <i class="bi bi-circle"></i><span>Ratios</span>
             </a>
           </li>
@@ -84,7 +84,7 @@
       @if(array_key_exists("RATIOS", Session::get('permisos')))
         @if(in_array("ratios.ver", Session::get('permisos')['RATIOS']))
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+          <a class="nav-link collapsed" href="{{ route('calcular-ratios.show') }}">
             <i class="bi bi-person"></i>
             <span>Ratios</span>
           </a>
