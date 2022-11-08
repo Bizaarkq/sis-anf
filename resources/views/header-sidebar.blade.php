@@ -60,7 +60,7 @@
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="{{ route('calcular-ratios.show') }}">
+            <a href="{{route('ratios')}}">
               <i class="bi bi-circle"></i><span>Ratios</span>
             </a>
           </li>
@@ -84,7 +84,7 @@
       @if(array_key_exists("RATIOS", Session::get('permisos')))
         @if(in_array("ratios.ver", Session::get('permisos')['RATIOS']))
         <li class="nav-item">
-          <a class="nav-link collapsed" href="{{ route('calcular-ratios.show') }}">
+          <a class="nav-link collapsed" href="{{route('ratios')}}">
             <i class="bi bi-person"></i>
             <span>Ratios</span>
           </a>
