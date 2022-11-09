@@ -7,6 +7,7 @@ use App\Http\Controllers\CargarEstadosController;
 use App\Http\Controllers\RatiosController;
 use App\Http\Controllers\CargarCatalogoController;
 use App\Http\Controllers\AnalisisHorizontalController;
+use App\Http\Controllers\GraficaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +33,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
     Route::middleware(['auth'])->group(function(){
-        Route::view('/',"home")->name('home');
+        Route::get('/', [GraficaController::class, 'home'])->name('home');
         Route::get('/empresas', [EmpresaController::class, 'index'])->name('empresas');
         Route::post('/empresa/rol', [EmpresaController::class, 'setRolEmpresa'])->name('empresa.rol');
 
