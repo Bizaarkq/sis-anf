@@ -6,6 +6,7 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\CargarEstadosController;
 use App\Http\Controllers\RatiosController;
 use App\Http\Controllers\CargarCatalogoController;
+use App\Http\Controllers\AnalisisHorizontalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,6 +50,8 @@ use Illuminate\Support\Facades\Route;
         });
 
         Route::get('/analisis-vertical', [AnalisisVerticalController::class, 'index'])->name('analisis-vertical');
+        Route::get('/analisis-horizontal', [AnalisisHorizontalController::class, 'index'])->name('analisis-horizontal.index');
+
     });
 
 
