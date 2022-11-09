@@ -17,4 +17,18 @@ class Financieras
         44 => 'IMPUESTO_RENTA',
         45 => 'UTILIDAD_NETA'
     ];
+    const BALANCE = [
+        9 => 'ACTIVO_CORRIENTE',
+        15 => 'ACTIVO_NO_CORRIENTE',
+        16 => 'ACTIVO_TOTAL',
+        23 => 'PASIVO_CORRIENTE',
+        25 => 'PASIVO_NO_CORRIENTE',
+        26 => 'PASIVO_TOTAL',
+        31 => 'PATRIMONIO',
+        32 => 'PASIVO_PATRIMONIO',
+        1 => "EFECTIVO",
+        2 => "CUENTAS_COBRO",
+        8 => "INVENTARIOS",
+        17 => "PROVEEDORES"
+    ];
 }

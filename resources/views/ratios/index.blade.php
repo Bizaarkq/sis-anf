@@ -1,5 +1,7 @@
 @extends('layouts.main')
 @section('content')
+    <button class="btn btn-primary" id="calcularRatios" type="button">Actualizar Ratios</button>
+    <BR></BR>
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -70,4 +72,25 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+    <script>
+        $(document).ready(function(){
+            $('#calcularRatios').click(function(){
+                $.ajax({
+                    url: "{{route('ratios.calculo')}}",
+                    type: "POST",
+                    data: {
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(response){
+                        alert(response.message)
+                        location.reload();
+                    }
+                });
+            });
+        });
+    </script>
+
+
 @endsection
