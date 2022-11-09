@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnalisisVerticalController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\CargarEstadosController;
@@ -47,6 +48,7 @@ use Illuminate\Support\Facades\Route;
             Route::get('/', [CargarCatalogoController::class, 'show'])->name('cargar-catalogo.show');
         });
 
+        Route::get('/analisis-vertical', [AnalisisVerticalController::class, 'index'])->name('analisis-vertical');
     });
 
 
