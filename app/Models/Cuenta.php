@@ -19,6 +19,8 @@ class Cuenta extends Model
         return $this->subCuentas()->with('todasSubCuentas');
     }
 
-
+    public function libros(){
+        return $this->hasMany(Libro::class, 'ID_CATALOGO', 'ID_CATALOGO');
+    }
 
 }

@@ -53,6 +53,7 @@ use Illuminate\Support\Facades\Route;
         Route::get('/analisis-vertical', [AnalisisVerticalController::class, 'index'])->name('analisis-vertical');
         Route::get('/analisis-horizontal', [AnalisisHorizontalController::class, 'index'])->name('analisis-horizontal.index');
 
+        Route::Get('/grafica/{id}/{inicio}/{fin}', [GraficaController::class, 'grafica'])->name('grafica.data');
     });
 
 
