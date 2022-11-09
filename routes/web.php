@@ -8,6 +8,7 @@ use App\Http\Controllers\RatiosController;
 use App\Http\Controllers\CargarCatalogoController;
 use App\Http\Controllers\RatioTipoController;
 use App\Http\Controllers\AnalisisHorizontalController;
+use App\Http\Controllers\GraficaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +34,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
     Route::middleware(['auth'])->group(function(){
-        Route::view('/',"home")->name('home');
+        Route::get('/', [GraficaController::class, 'home'])->name('home');
         Route::get('/empresas', [EmpresaController::class, 'index'])->name('empresas');
         Route::post('/empresa/rol', [EmpresaController::class, 'setRolEmpresa'])->name('empresa.rol');
 
@@ -66,6 +67,7 @@ use Illuminate\Support\Facades\Route;
         Route::get('/analisis-vertical', [AnalisisVerticalController::class, 'index'])->name('analisis-vertical');
         Route::get('/analisis-horizontal', [AnalisisHorizontalController::class, 'index'])->name('analisis-horizontal.index');
 
+        Route::Get('/grafica/{id}/{inicio}/{fin}', [GraficaController::class, 'grafica'])->name('grafica.data');
 
     });
 
