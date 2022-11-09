@@ -92,5 +92,8 @@
             </tr>
         </tbody>
     </table>
+
+    <h3 class="text-left h4">Estado de resultado</h3>
+    
 </div>
 @endsection

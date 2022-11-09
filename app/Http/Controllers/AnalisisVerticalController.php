@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AnalisisVerticalController extends Controller
 {
@@ -16,6 +17,7 @@ class AnalisisVerticalController extends Controller
         $sumaCapital = 0;
         $prueba = app('App\Http\Controllers\CuentasController')->ledger(2022, $cuentasMayor);
         
+        //CODIGO PARA EL BALANCE GENERAL
         if(!empty($prueba)){
             foreach($prueba as $prub){
                 $total[$prub['id']] = $prub['saldo'] == 'DEUDOR' ? 
@@ -36,6 +38,12 @@ class AnalisisVerticalController extends Controller
         //dd($sumaActivo, $sumaPasivo, $sumaCapital);
         //dd($total, $cuentas);
         //dd($cuentas);
-        return view('analisis-vertical.index', compact('cuentas', 'total', 'sumaActivo', 'sumaPasivo', 'sumaCapital'));
+
+        //CODIGO PARA EL ESTADO DE RESULTADO
+        $cuentasER = DB::table('CUENTA_FINANCIERA')
+        ->where('CUENTA_FINANCIERA.ID_ESTADO_FINANCIERO', '=', 2)
+        ->get();
+        dd($cuentasER);
+        return view('analisis-vertical.index', compact('cuentas', 'total', 'sumaActivo', 'sumaPasivo', 'sumaCapital', 'cuentasER'));
     }
 }
