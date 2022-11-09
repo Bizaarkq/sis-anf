@@ -17,6 +17,26 @@ class AnalisisVerticalController extends Controller
         $sumaCapital = 0;
         $prueba = app('App\Http\Controllers\CuentasController')->ledger(2022, $cuentasMayor);
         
+        //CONSULTA PARA EL ESTADO DE RESULTADO
+        $bandera = true;
+        $estados = DB::table('REGISTRO')
+            ->join('PERIODO', 'PERIODO.ID_PERIODO', '=', 'REGISTRO.ID_PERIODO')
+            ->join('CUENTA_FINANCIERA', 'CUENTA_FINANCIERA.ID_CUENTA_FINANCIERA', '=', 'REGISTRO.ID_CUENTA_FINANCIERA')
+            ->select("REGISTRO.MONTO_REGISTRO", "REGISTRO.ID_CUENTA_FINANCIERA", 'CUENTA_FINANCIERA.NOMBRE_CUENTA_FINANCIERA')
+            ->where('REGISTRO.ID_EMPRESA', session('empresaID'))
+            ->where('PERIODO.ACTIVO_PERIODO', '=', 1)
+            ->where('REGISTRO.ID_CUENTA_FINANCIERA', '>=', 33)
+            ->get();
+        //dd($estados);
+        $ingresos = 0;
+        $ingresosER = DB::table('REGISTRO')
+        ->join('PERIODO', 'PERIODO.ID_PERIODO', '=', 'REGISTRO.ID_PERIODO')
+        ->join('CUENTA_FINANCIERA', 'CUENTA_FINANCIERA.ID_CUENTA_FINANCIERA', '=', 'REGISTRO.ID_CUENTA_FINANCIERA')
+        ->where('REGISTRO.ID_EMPRESA', session('empresaID'))
+        ->where('PERIODO.ACTIVO_PERIODO', '=', '1')
+        ->where('REGISTRO.ID_CUENTA_FINANCIERA', '=', 33)
+        ->pluck('REGISTRO.MONTO_REGISTRO');   
+        $ingresos = $ingresosER[0];
         //CODIGO PARA EL BALANCE GENERAL
         if(!empty($prueba)){
             foreach($prueba as $prub){
@@ -35,15 +55,12 @@ class AnalisisVerticalController extends Controller
                 }
             }
         }
-        //dd($sumaActivo, $sumaPasivo, $sumaCapital);
-        //dd($total, $cuentas);
-        //dd($cuentas);
 
         //CODIGO PARA EL ESTADO DE RESULTADO
         $cuentasER = DB::table('CUENTA_FINANCIERA')
         ->where('CUENTA_FINANCIERA.ID_ESTADO_FINANCIERO', '=', 2)
         ->get();
-        dd($cuentasER);
-        return view('analisis-vertical.index', compact('cuentas', 'total', 'sumaActivo', 'sumaPasivo', 'sumaCapital', 'cuentasER'));
+        //dd($cuentasER);
+        return view('analisis-vertical.index', compact('cuentas', 'total', 'sumaActivo', 'sumaPasivo', 'sumaCapital', 'cuentasER', 'estados', 'ingresos'));
     }
 }

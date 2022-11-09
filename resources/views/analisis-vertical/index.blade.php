@@ -93,7 +93,18 @@
         </tbody>
     </table>
 
+    <br>
     <h3 class="text-left h4">Estado de resultado</h3>
-    
+    <table class="table table-bordered mt-4 mx-auto" style="width:90%;">
+        <tbody>
+            @foreach($estados as $e)
+                <tr>
+                    <td>{{$e->NOMBRE_CUENTA_FINANCIERA}}</td>
+                    <td>$ {{ number_format($e->MONTO_REGISTRO) }}</td>
+                    <td>{{round(($e->MONTO_REGISTRO/$ingresos)*100, 2)}}%</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
 @endsection
