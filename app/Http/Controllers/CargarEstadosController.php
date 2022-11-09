@@ -54,6 +54,15 @@ class CargarEstadosController extends Controller
                                     DB::table('REGISTRO')
                                     ->Where('ID_REGISTRO', $registro[$key]['ID_REGISTRO'])
                                     ->update(['MONTO_REGISTRO' => $cuenta[1]], ['UPDATED_USER' => Auth::user()->username]);
+                                }else{
+                                    DB::table('REGISTRO')->insert([
+                                        'ID_EMPRESA' => $empresaID,
+                                        'ID_PERIODO' => $cuerpo['periodoEstado'],
+                                        'ID_CUENTA_FINANCIERA' => $cuentasFinancierasBase[$cuenta[0]],
+                                        'MONTO_REGISTRO' => $cuenta[1],
+                                        'CREATED_USER' => Auth::user()->username,
+                                        'UPDATED_USER' => Auth::user()->username,
+                                    ]);
                                 }
                             }
                         }
@@ -88,6 +97,15 @@ class CargarEstadosController extends Controller
                                 ->Where('ID_REGISTRO', $registro[$key]['ID_REGISTRO'])
                                 ->update(['MONTO_REGISTRO' => $monto], ['UPDATED_USER' => Auth::user()->username]);
                             }
+                        }else{
+                            DB::table('REGISTRO')->insert([
+                                'ID_EMPRESA' => $empresaID,
+                                'ID_PERIODO' => $cuerpo['periodoEstado'],
+                                'ID_CUENTA_FINANCIERA' => $cuenta,
+                                'MONTO_REGISTRO' => $monto,
+                                'CREATED_USER' => Auth::user()->username,
+                                'UPDATED_USER' => Auth::user()->username,
+                            ]);
                         }
                     }
                 }

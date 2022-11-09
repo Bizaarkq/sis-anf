@@ -33,13 +33,17 @@ class EmpresaController extends Controller
 
         $permisos = DB::table('OPCION_FORM')->whereIn('ID_OPCION', $permisosEmpresa)->get();
         $coleccion = array();
-
+        $tipo_sector = DB::table('EMPRESA')
+        ->where('ID_EMPRESA', $request->empresaId)
+        ->pluck('ID_TIPO_SECTOR');
+        
         foreach($permisos as $permiso){
             $coleccion[$permiso->FORM][] = $permiso->DESC_OPCION;
         }
         Session::put('empresaID', $request->empresaId);
         Session::put('permisos', $coleccion);
-
+        Session::put('idTipoSector', $tipo_sector[0]);
+        
         return redirect(route('home'));
     }
 

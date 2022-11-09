@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AnalisisVerticalController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\CargarEstadosController;
 use App\Http\Controllers\RatiosController;
 use App\Http\Controllers\CargarCatalogoController;
 use App\Http\Controllers\RatioTipoController;
+use App\Http\Controllers\AnalisisHorizontalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,9 +46,13 @@ use Illuminate\Support\Facades\Route;
 
         Route::get('/ratios', [RatiosController::class, 'index'])->name('ratios');
 
+        Route::post('/ratios/calculo', [RatiosController::class, 'calculoRatios'])->name('ratios.calculo');
+
+
         Route::prefix('cargar-catalogo')->group(function(){
             Route::get('/', [CargarCatalogoController::class, 'show'])->name('cargar-catalogo.show');
         });
+
         Route::prefix('nacionales')->group(function(){
             Route::get('/',[RatioTipoController::class, 'show'])->name('nacionales.show');
             Route::get('/create',[RatioTipoController::class, 'create'])->name('nacionales.create');
@@ -55,6 +61,11 @@ use Illuminate\Support\Facades\Route;
             Route::get('/update/{id}',[RatioTipoController::class, 'update'])->name('nacionales.update');
             Route::get('/delete/{id}',[RatioTipoController::class, 'destroy'])->name('nacionales.delete');
         });
+
+
+        Route::get('/analisis-vertical', [AnalisisVerticalController::class, 'index'])->name('analisis-vertical');
+        Route::get('/analisis-horizontal', [AnalisisHorizontalController::class, 'index'])->name('analisis-horizontal.index');
+
 
     });
 

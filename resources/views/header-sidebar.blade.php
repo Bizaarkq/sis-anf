@@ -25,6 +25,10 @@
               <hr class="dropdown-divider">
             </li>
             <li>
+              <a class="dropdown-item d-flex align-items-center" href="{{route('empresas')}}">
+                <i class="bi bi-shuffle"></i>
+                <span>Cambiar de empresa</span>
+              </a>
               <a class="dropdown-item d-flex align-items-center" href="{{route('logout')}}">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Cerrar sesión</span>
@@ -60,7 +64,7 @@
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="#">
+            <a href="{{route('ratios')}}">
               <i class="bi bi-circle"></i><span>Ratios</span>
             </a>
           </li>
@@ -84,7 +88,7 @@
       @if(array_key_exists("RATIOS", Session::get('permisos')))
         @if(in_array("ratios.ver", Session::get('permisos')['RATIOS']))
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+          <a class="nav-link collapsed" href="{{route('ratios')}}">
             <i class="bi bi-person"></i>
             <span>Ratios</span>
           </a>
@@ -95,7 +99,7 @@
       @if(array_key_exists("ANALISIS_VERTICAL", Session::get('permisos')))
         @if(in_array("analisis.vertical.ver", Session::get('permisos')['ANALISIS_VERTICAL']))
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+          <a class="nav-link collapsed" href="{{route('analisis-vertical')}}">
             <i class="bi bi-question-circle"></i>
             <span>Análisis Vertical</span>
           </a>
@@ -106,7 +110,7 @@
       @if(array_key_exists("ANALISIS_HORIZONTAL", Session::get('permisos')))
         @if(in_array("analisis.horizontal.ver", Session::get('permisos')['ANALISIS_HORIZONTAL']))
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+          <a class="nav-link collapsed" href="{{route('analisis-horizontal.index')}}">
             <i class="bi bi-envelope"></i>
             <span>Análisis Horizontal</span>
           </a>
