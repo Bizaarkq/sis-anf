@@ -31,7 +31,7 @@ class LoginController extends Controller
 
         Auth::login($user);
 
-        return  redirect(route('home'));
+        return  redirect(route('empresas'));
 
     }
 
@@ -51,7 +51,7 @@ class LoginController extends Controller
 
         if(Auth::attempt($credenciales,$remember)){
             $request->session()->regenerate();
-            return redirect()->intended(route('empresas'));
+            return redirect(route('empresas'));
         }
         
         $errors = new MessageBag(['username' => ['Estas credenciales no coinciden con nuestros registros.']]);

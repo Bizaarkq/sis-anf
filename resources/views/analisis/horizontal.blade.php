@@ -356,6 +356,255 @@
             
         </tbody>
     </table>
+    <br>
+    <h3 class="text-left h4">Estados de Resultados</h3>
+    <table class="table table-bordered mt-4 mx-auto" style="width:90%;">
+        <thead>
+            <tr class="table-light text-center">
+                <th></th>
+                @foreach($periodoser as $periodo)
+                    <th>{{$periodo}}</th>
+                @endforeach
+                @for($i=0; $i < count($periodoser)- 1; $i++)
+                    <th colspan="2">{{$periodoser[$i]}} - {{$periodoser[$i+1]}}</th>
+                @endfor
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>Ingresos</td>
+                    @foreach($periodoser as $periodo)
+                        <td class="text-end">$ {{number_format($financieras[$periodo]['INGRESOS'] ?? 0, 2)}}</td>
+                    @endforeach
+
+                    @for($i=0; $i < count($periodoser)- 1; $i++)
+                        @php($negativo = $financieras[$periodoser[$i]]['INGRESOS'] > $financieras[$periodoser[$i+1]]['INGRESOS'])
+                        <td class="text-end">{{$negativo ? '-':''}}$ {{number_format($financieras[$periodoser[$i]]['INGRESOS'] - $financieras[$periodoser[$i+1]]['INGRESOS'], 2)}}</td>
+                        <td class="text-end">{{$negativo ? '-':''}}
+                            {{
+                            number_format(
+                                ($financieras[$periodoser[$i]]['INGRESOS'] - $financieras[$periodoser[$i+1]]['INGRESOS'])
+                                /($financieras[$periodoser[$i]]['INGRESOS']  == 0 ? 
+                                $financieras[$periodoser[$i+1]]['INGRESOS'] == 0 ? 1 
+                                : $financieras[$periodoser[$i+1]]['INGRESOS']
+                                : $financieras[$periodoser[$i]]['INGRESOS'] )
+                                , 2)
+                        }} %</td>
+                    @endfor
+                </tr>
+                <tr>
+                    <td>Costos de Ventas</td>
+                    @foreach($periodoser as $periodo)
+                        <td class="text-end">$ {{number_format($financieras[$periodo]['COSTO_VENTAS'] ?? 0, 2)}}</td>
+                    @endforeach
+
+                    @for($i=0; $i < count($periodoser)- 1; $i++)
+                        @php($negativo = $financieras[$periodoser[$i]]['COSTO_VENTAS'] > $financieras[$periodoser[$i+1]]['COSTO_VENTAS'])
+                        <td class="text-end">{{$negativo ? '-':''}}$ {{number_format($financieras[$periodoser[$i]]['COSTO_VENTAS'] - $financieras[$periodoser[$i+1]]['COSTO_VENTAS'], 2)}}</td>
+                        <td class="text-end">{{$negativo ? '-':''}}
+                            {{
+                            number_format(
+                                ($financieras[$periodoser[$i]]['COSTO_VENTAS'] - $financieras[$periodoser[$i+1]]['COSTO_VENTAS'])
+                                /($financieras[$periodoser[$i]]['COSTO_VENTAS']  == 0 ? 
+                                $financieras[$periodoser[$i+1]]['COSTO_VENTAS'] == 0 ? 1 
+                                : $financieras[$periodoser[$i+1]]['COSTO_VENTAS']
+                                : $financieras[$periodoser[$i]]['COSTO_VENTAS'] )
+                                , 2)
+                        }} %</td>
+                    @endfor
+                </tr>
+                <tr>
+                    <td>Utilidad Bruta</td>
+                    @foreach($periodoser as $periodo)
+                        <td class="text-end">$ {{number_format($financieras[$periodo]['UTILIDAD_BRUTA'] ?? 0, 2)}}</td>
+                    @endforeach
+
+                    @for($i=0; $i < count($periodoser)- 1; $i++)
+                        @php($negativo = $financieras[$periodoser[$i]]['UTILIDAD_BRUTA'] > $financieras[$periodoser[$i+1]]['UTILIDAD_BRUTA'])
+                        <td class="text-end">{{$negativo ? '-':''}}$ {{number_format($financieras[$periodoser[$i]]['UTILIDAD_BRUTA'] - $financieras[$periodoser[$i+1]]['UTILIDAD_BRUTA'], 2)}}</td>
+                        <td class="text-end">{{$negativo ? '-':''}}
+                            {{
+                            number_format(
+                                ($financieras[$periodoser[$i]]['UTILIDAD_BRUTA'] - $financieras[$periodoser[$i+1]]['UTILIDAD_BRUTA'])
+                                /($financieras[$periodoser[$i]]['UTILIDAD_BRUTA']  == 0 ? 
+                                $financieras[$periodoser[$i+1]]['UTILIDAD_BRUTA'] == 0 ? 1 
+                                : $financieras[$periodoser[$i+1]]['UTILIDAD_BRUTA']
+                                : $financieras[$periodoser[$i]]['UTILIDAD_BRUTA'] )
+                                , 2)
+                        }} %</td>
+                    @endfor
+                </tr>
+                <tr>
+                    <td>Gastos de Operación</td>
+                    @foreach($periodoser as $periodo)
+                    <td class="text-end">$ {{number_format($financieras[$periodo]['GASTOS_OPERACION'] ?? 0, 2)}}</td>
+                @endforeach
+
+                @for($i=0; $i < count($periodoser)- 1; $i++)
+                    @php($negativo = $financieras[$periodoser[$i]]['GASTOS_OPERACION'] > $financieras[$periodoser[$i+1]]['GASTOS_OPERACION'])
+                    <td class="text-end">{{$negativo ? '-':''}}$ {{number_format($financieras[$periodoser[$i]]['GASTOS_OPERACION'] - $financieras[$periodoser[$i+1]]['GASTOS_OPERACION'], 2)}}</td>
+                    <td class="text-end">{{$negativo ? '-':''}}
+                        {{
+                        number_format(
+                            ($financieras[$periodoser[$i]]['GASTOS_OPERACION'] - $financieras[$periodoser[$i+1]]['GASTOS_OPERACION'])
+                            /($financieras[$periodoser[$i]]['GASTOS_OPERACION']  == 0 ? 
+                            $financieras[$periodoser[$i+1]]['GASTOS_OPERACION'] == 0 ? 1 
+                            : $financieras[$periodoser[$i+1]]['GASTOS_OPERACION']
+                            : $financieras[$periodoser[$i]]['GASTOS_OPERACION'] )
+                            , 2)
+                    }} %</td>
+                @endfor
+                </tr>
+                <tr>
+                    <td>Utilidad de Operación</td>
+                    @foreach($periodoser as $periodo)
+                        <td class="text-end">$ {{number_format($financieras[$periodo]['UTILIDAD_OPERACION'] ?? 0, 2)}}</td>
+                    @endforeach
+
+                    @for($i=0; $i < count($periodoser)- 1; $i++)
+                        @php($negativo = $financieras[$periodoser[$i]]['UTILIDAD_OPERACION'] > $financieras[$periodoser[$i+1]]['UTILIDAD_OPERACION'])
+                        <td class="text-end">{{$negativo ? '-':''}}$ {{number_format($financieras[$periodoser[$i]]['UTILIDAD_OPERACION'] - $financieras[$periodoser[$i+1]]['UTILIDAD_OPERACION'], 2)}}</td>
+                        <td class="text-end">{{$negativo ? '-':''}}
+                            {{
+                            number_format(
+                                ($financieras[$periodoser[$i]]['UTILIDAD_OPERACION'] - $financieras[$periodoser[$i+1]]['UTILIDAD_OPERACION'])
+                                /($financieras[$periodoser[$i]]['UTILIDAD_OPERACION']  == 0 ? 
+                                $financieras[$periodoser[$i+1]]['UTILIDAD_OPERACION'] == 0 ? 1 
+                                : $financieras[$periodoser[$i+1]]['UTILIDAD_OPERACION']
+                                : $financieras[$periodoser[$i]]['UTILIDAD_OPERACION'] )
+                                , 2)
+                        }} %</td>
+                    @endfor
+                </tr>
+                <tr>
+                    <td>Otros Ingresos</td>
+                    @foreach($periodoser as $periodo)
+                        <td class="text-end">$ {{number_format($financieras[$periodo]['OTROS_INGRESOS'] ?? 0, 2)}}</td>
+                    @endforeach
+
+                    @for($i=0; $i < count($periodoser)- 1; $i++)
+                        @php($negativo = $financieras[$periodoser[$i]]['OTROS_INGRESOS'] > $financieras[$periodoser[$i+1]]['OTROS_INGRESOS'])
+                        <td class="text-end">{{$negativo ? '-':''}}$ {{number_format($financieras[$periodoser[$i]]['OTROS_INGRESOS'] - $financieras[$periodoser[$i+1]]['OTROS_INGRESOS'], 2)}}</td>
+                        <td class="text-end">{{$negativo ? '-':''}}
+                            {{
+                            number_format(
+                                ($financieras[$periodoser[$i]]['OTROS_INGRESOS'] - $financieras[$periodoser[$i+1]]['OTROS_INGRESOS'])
+                                /($financieras[$periodoser[$i]]['OTROS_INGRESOS']  == 0 ? 
+                                $financieras[$periodoser[$i+1]]['OTROS_INGRESOS'] == 0 ? 1 
+                                : $financieras[$periodoser[$i+1]]['OTROS_INGRESOS']
+                                : $financieras[$periodoser[$i]]['OTROS_INGRESOS'] )
+                                , 2)
+                        }} %</td>
+                    @endfor
+                </tr>
+                <tr>
+                    <td>Utilidad antes de Impuestos y Reserva Legal</td>
+                    @foreach($periodoser as $periodo)
+                        <td class="text-end">$ {{number_format($financieras[$periodo]['UTILIDAD_IMP_RES'] ?? 0, 2)}}</td>
+                    @endforeach
+
+                    @for($i=0; $i < count($periodoser)- 1; $i++)
+                        @php($negativo = $financieras[$periodoser[$i]]['UTILIDAD_IMP_RES'] > $financieras[$periodoser[$i+1]]['UTILIDAD_IMP_RES'])
+                        <td class="text-end">{{$negativo ? '-':''}}$ {{number_format($financieras[$periodoser[$i]]['UTILIDAD_IMP_RES'] - $financieras[$periodoser[$i+1]]['UTILIDAD_IMP_RES'], 2)}}</td>
+                        <td class="text-end">{{$negativo ? '-':''}}
+                            {{
+                            number_format(
+                                ($financieras[$periodoser[$i]]['UTILIDAD_IMP_RES'] - $financieras[$periodoser[$i+1]]['UTILIDAD_IMP_RES'])
+                                /($financieras[$periodoser[$i]]['UTILIDAD_IMP_RES']  == 0 ? 
+                                $financieras[$periodoser[$i+1]]['UTILIDAD_IMP_RES'] == 0 ? 1 
+                                : $financieras[$periodoser[$i+1]]['UTILIDAD_IMP_RES']
+                                : $financieras[$periodoser[$i]]['UTILIDAD_IMP_RES'] )
+                                , 2)
+                        }} %</td>
+                    @endfor
+                </tr>
+                <tr>
+                    <td>Reservas</td>
+                    @foreach($periodoser as $periodo)
+                        <td class="text-end">$ {{number_format($financieras[$periodo]['RESERVA'] ?? 0, 2)}}</td>
+                    @endforeach
+
+                    @for($i=0; $i < count($periodoser)- 1; $i++)
+                        @php($negativo = $financieras[$periodoser[$i]]['RESERVA'] > $financieras[$periodoser[$i+1]]['RESERVA'])
+                        <td class="text-end">{{$negativo ? '-':''}}$ {{number_format($financieras[$periodoser[$i]]['RESERVA'] - $financieras[$periodoser[$i+1]]['RESERVA'], 2)}}</td>
+                        <td class="text-end">{{$negativo ? '-':''}}
+                            {{
+                            number_format(
+                                ($financieras[$periodoser[$i]]['RESERVA'] - $financieras[$periodoser[$i+1]]['RESERVA'])
+                                /($financieras[$periodoser[$i]]['RESERVA']  == 0 ? 
+                                $financieras[$periodoser[$i+1]]['RESERVA'] == 0 ? 1 
+                                : $financieras[$periodoser[$i+1]]['RESERVA']
+                                : $financieras[$periodoser[$i]]['RESERVA'] )
+                                , 2)
+                        }} %</td>
+                    @endfor
+                </tr>
+                <tr>
+                    <td>Utilidad antes de Impuestos</td>
+                    @foreach($periodoser as $periodo)
+                        <td class="text-end">$ {{number_format($financieras[$periodo]['UTILIDAD_IMP'] ?? 0, 2)}}</td>
+                    @endforeach
+
+                    @for($i=0; $i < count($periodoser)- 1; $i++)
+                        @php($negativo = $financieras[$periodoser[$i]]['UTILIDAD_IMP'] > $financieras[$periodoser[$i+1]]['UTILIDAD_IMP'])
+                        <td class="text-end">{{$negativo ? '-':''}}$ {{number_format($financieras[$periodoser[$i]]['UTILIDAD_IMP'] - $financieras[$periodoser[$i+1]]['UTILIDAD_IMP'], 2)}}</td>
+                        <td class="text-end">{{$negativo ? '-':''}}
+                            {{
+                            number_format(
+                                ($financieras[$periodoser[$i]]['UTILIDAD_IMP'] - $financieras[$periodoser[$i+1]]['UTILIDAD_IMP'])
+                                /($financieras[$periodoser[$i]]['UTILIDAD_IMP']  == 0 ? 
+                                $financieras[$periodoser[$i+1]]['UTILIDAD_IMP'] == 0 ? 1 
+                                : $financieras[$periodoser[$i+1]]['UTILIDAD_IMP']
+                                : $financieras[$periodoser[$i]]['UTILIDAD_IMP'] )
+                                , 2)
+                        }} %</td>
+                    @endfor
+                </tr>
+                <tr>
+                    <td>Impuestos</td>
+                    @foreach($periodoser as $periodo)
+                        <td class="text-end">$ {{number_format($financieras[$periodo]['IMPUESTO_RENTA'] ?? 0, 2)}}</td>
+                    @endforeach
+
+                    @for($i=0; $i < count($periodoser)- 1; $i++)
+                        @php($negativo = $financieras[$periodoser[$i]]['IMPUESTO_RENTA'] > $financieras[$periodoser[$i+1]]['IMPUESTO_RENTA'])
+                        <td class="text-end">{{$negativo ? '-':''}}$ {{number_format($financieras[$periodoser[$i]]['IMPUESTO_RENTA'] - $financieras[$periodoser[$i+1]]['IMPUESTO_RENTA'], 2)}}</td>
+                        <td class="text-end">{{$negativo ? '-':''}}
+                            {{
+                            number_format(
+                                ($financieras[$periodoser[$i]]['IMPUESTO_RENTA'] - $financieras[$periodoser[$i+1]]['IMPUESTO_RENTA'])
+                                /($financieras[$periodoser[$i]]['IMPUESTO_RENTA']  == 0 ? 
+                                $financieras[$periodoser[$i+1]]['IMPUESTO_RENTA'] == 0 ? 1 
+                                : $financieras[$periodoser[$i+1]]['IMPUESTO_RENTA']
+                                : $financieras[$periodoser[$i]]['IMPUESTO_RENTA'] )
+                                , 2)
+                        }} %</td>
+                    @endfor
+                </tr>
+                <tr>
+                    <td>Utilidad Neta</td>
+                    @foreach($periodoser as $periodo)
+                        <td class="text-end">$ {{number_format($financieras[$periodo]['UTILIDAD_NETA'] ?? 0, 2)}}</td>
+                    @endforeach
+
+                    @for($i=0; $i < count($periodoser)- 1; $i++)
+                        @php($negativo = $financieras[$periodoser[$i]]['UTILIDAD_NETA'] > $financieras[$periodoser[$i+1]]['UTILIDAD_NETA'])
+                        <td class="text-end">{{$negativo ? '-':''}}$ {{number_format($financieras[$periodoser[$i]]['UTILIDAD_NETA'] - $financieras[$periodoser[$i+1]]['UTILIDAD_NETA'], 2)}}</td>
+                        <td class="text-end">{{$negativo ? '-':''}}
+                            {{
+                            number_format(
+                                ($financieras[$periodoser[$i]]['UTILIDAD_NETA'] - $financieras[$periodoser[$i+1]]['UTILIDAD_NETA'])
+                                /($financieras[$periodoser[$i]]['UTILIDAD_NETA']  == 0 ? 
+                                $financieras[$periodoser[$i+1]]['UTILIDAD_NETA'] == 0 ? 1 
+                                : $financieras[$periodoser[$i+1]]['UTILIDAD_NETA']
+                                : $financieras[$periodoser[$i]]['UTILIDAD_NETA'] )
+                                , 2)
+                        }} %</td>
+                    @endfor
+                </tr>
+
+        </tbody>
+    </table>
 </div>
 
 

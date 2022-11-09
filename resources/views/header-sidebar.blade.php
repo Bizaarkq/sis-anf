@@ -25,6 +25,10 @@
               <hr class="dropdown-divider">
             </li>
             <li>
+              <a class="dropdown-item d-flex align-items-center" href="{{route('empresas')}}">
+                <i class="bi bi-shuffle"></i>
+                <span>Cambiar de empresa</span>
+              </a>
               <a class="dropdown-item d-flex align-items-center" href="{{route('logout')}}">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Cerrar sesión</span>
@@ -106,7 +110,7 @@
       @if(array_key_exists("ANALISIS_HORIZONTAL", Session::get('permisos')))
         @if(in_array("analisis.horizontal.ver", Session::get('permisos')['ANALISIS_HORIZONTAL']))
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+          <a class="nav-link collapsed" href="{{route('analisis-horizontal.index')}}">
             <i class="bi bi-envelope"></i>
             <span>Análisis Horizontal</span>
           </a>
