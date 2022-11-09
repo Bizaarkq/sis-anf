@@ -51,8 +51,9 @@ use Illuminate\Support\Facades\Route;
             Route::get('/',[RatioTipoController::class, 'show'])->name('nacionales.show');
             Route::get('/create',[RatioTipoController::class, 'create'])->name('nacionales.create');
             Route::post('/create',[RatioTipoController::class, 'store'])->name('nacionales.store');
-            Route::get('/edit',[RatioTipoController::class, 'edit'])->name('nacionales.edit');
-            Route::get('/update',[RatioTipoController::class, 'update'])->name('nacionales.update');
+            Route::get('/edit/{id}',[RatioTipoController::class, 'edit'])->name('nacionales.edit');
+            Route::get('/update/{id}',[RatioTipoController::class, 'update'])->name('nacionales.update');
+            Route::get('/delete/{id}',[RatioTipoController::class, 'destroy'])->name('nacionales.delete');
         });
 
     });

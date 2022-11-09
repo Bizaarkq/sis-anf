@@ -59,9 +59,12 @@
                                 </td>
                                 <td class="p-2">
                                     <div class="text-left font-medium text-green-500">
-                                        <a class="btn btn-primary" href="{{route('nacionales.edit',['request'=>$ratios]) }}" 
+                                        <a class="btn btn-primary" href="{{route('nacionales.edit', ['id' => $ratios->ID_RATIO_POR_TIPO]) }}" 
                                             class="p-2 text-black text-xs font-thin">Editar</a>
+                                        <a class="btn btn-danger" href="{{route('nacionales.delete', ['id' => $ratios->ID_RATIO_POR_TIPO]) }}" 
+                                                class="p-2 text-black text-xs font-thin">Eliminar</a>
                                     </div>
+                                    
                                 </td>
                             </tr>
                             @endforeach

@@ -21,7 +21,7 @@
                   class="col-sm-9 col-form-label activos activos-corrientes">Nombre del
                   ratio</label>
           </div>
-          <select name="catalogo">
+          <select class="form-select"  name="catalogo">
             @foreach ($catalogo as $ratios)
             <option value="{{$ratios->ID_RATIO_CATALOGO}}" id="{{$ratios->ID_RATIO_CATALOGO}}">
               {{$ratios->NOMBRE_RATIO_CATALOGO}}
@@ -37,7 +37,7 @@
                   class="col-sm-9 col-form-label activos activos-corrientes">Sector del
                   ratio</label>
           </div>
-          <select name="sectores">
+          <select class="form-select"  name="sectores">
               @foreach ($sectores as $rubros)
               <option value="{{$rubros->ID_TIPO_SECTOR}}" id="{{$rubros->ID_TIPO_SECTOR}}">
                 {{$rubros->NOMBRE_TIPO_SECTOR}}
@@ -53,7 +53,7 @@
               class="col-sm-9 col-form-label activos activos-corrientes">Valor
               del ratio</label>
           </div>
-          <input required type="number" step="0.01" id="VALOR_RATIO_POR_TIPO"
+          <input class="form-control" required type="number" step="0.01" id="VALOR_RATIO_POR_TIPO"
               name="VALOR_RATIO_POR_TIPO"> 
           <div class="row mb-3">
           </div>
