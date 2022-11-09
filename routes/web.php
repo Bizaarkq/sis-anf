@@ -44,6 +44,7 @@ use Illuminate\Support\Facades\Route;
         });
 
         Route::get('/ratios', [RatiosController::class, 'index'])->name('ratios');
+        Route::post('/ratios/calculo', [RatiosController::class, 'calculoRatios'])->name('ratios.calculo');
 
         Route::prefix('cargar-catalogo')->group(function(){
             Route::get('/', [CargarCatalogoController::class, 'show'])->name('cargar-catalogo.show');
