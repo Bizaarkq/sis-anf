@@ -91,6 +91,17 @@
         </li>
         @endif
       @endif
+      
+      @if(array_key_exists("ESTADOS_FINANCIEROS", Session::get('permisos')))
+        @if(in_array("estados.cargar", Session::get('permisos')['ESTADOS_FINANCIEROS']))
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{{route('calcular-ratios.show')}}">
+            <i class="bi bi-journal"></i>
+            <span>C&aacute;lculo de ratios</span>
+          </a>
+        </li>
+        @endif
+      @endif
 
       @if(array_key_exists("ANALISIS_VERTICAL", Session::get('permisos')))
         @if(in_array("analisis.vertical.ver", Session::get('permisos')['ANALISIS_VERTICAL']))
