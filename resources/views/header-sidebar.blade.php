@@ -65,7 +65,7 @@
             </a>
           </li>
           <li>
-            <a href="#">
+          <a href="{{route('nacionales.show')}}">
               <i class="bi bi-circle"></i><span>Parametros nacionales</span>
             </a>
           </li>

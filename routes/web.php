@@ -3,6 +3,9 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\CargarEstadosController;
+use App\Http\Controllers\RatiosController;
+use App\Http\Controllers\CargarCatalogoController;
+use App\Http\Controllers\RatioTipoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +41,20 @@ use Illuminate\Support\Facades\Route;
             Route::get('/exportar-excel', [CargarEstadosController::class, 'exportExcel'])->name('cargar-estados.export-excel');
             Route::get('/obtener/{periodo}', [CargarEstadosController::class, 'getEstados'])->name('cargar-estados.get-estados');
         });
+
+        Route::get('/ratios', [RatiosController::class, 'index'])->name('ratios');
+
+        Route::prefix('cargar-catalogo')->group(function(){
+            Route::get('/', [CargarCatalogoController::class, 'show'])->name('cargar-catalogo.show');
+        });
+        Route::prefix('nacionales')->group(function(){
+            Route::get('/',[RatioTipoController::class, 'show'])->name('nacionales.show');
+            Route::get('/create',[RatioTipoController::class, 'create'])->name('nacionales.create');
+            Route::post('/create',[RatioTipoController::class, 'store'])->name('nacionales.store');
+            Route::get('/edit',[RatioTipoController::class, 'edit'])->name('nacionales.edit');
+            Route::get('/update',[RatioTipoController::class, 'update'])->name('nacionales.update');
+        });
+
     });
 
 
