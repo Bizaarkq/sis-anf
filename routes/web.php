@@ -5,6 +5,7 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\CargarEstadosController;
 use App\Http\Controllers\RatiosController;
 use App\Http\Controllers\CargarCatalogoController;
+use App\Http\Controllers\AnalisisHorizontalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +47,8 @@ use Illuminate\Support\Facades\Route;
         Route::prefix('cargar-catalogo')->group(function(){
             Route::get('/', [CargarCatalogoController::class, 'show'])->name('cargar-catalogo.show');
         });
+
+        Route::get('/analisis-horizontal', [AnalisisHorizontalController::class, 'index'])->name('analisis-horizontal.index');
 
     });
 
