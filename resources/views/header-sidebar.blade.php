@@ -99,7 +99,7 @@
       @if(array_key_exists("ANALISIS_VERTICAL", Session::get('permisos')))
         @if(in_array("analisis.vertical.ver", Session::get('permisos')['ANALISIS_VERTICAL']))
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+          <a class="nav-link collapsed" href="{{route('analisis-vertical')}}">
             <i class="bi bi-question-circle"></i>
             <span>Análisis Vertical</span>
           </a>
